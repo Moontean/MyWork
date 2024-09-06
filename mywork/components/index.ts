@@ -6,7 +6,7 @@ import SearchBar from './SearchBar';
 import SearchManufacturer from './SearchManufacturer';
 import CarCard from './CarCard';
 import CartDetails from './CarDetails';
-import { CustomFilter } from './CustomFilter';
+import  CustomFilter  from './CustomFilter';
 import  ShowMore  from './ShowMore';
 
 

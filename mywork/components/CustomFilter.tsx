@@ -5,10 +5,10 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Listbox, Transition } from "@headlessui/react";
 
-import { CustomFilterProps } from "@/types";
+import { CustomFilterProps } from "@/types"; 
 import { updateSearchParams } from "@/utils";
 
-export function CustomFilter({ title, options }: CustomFilterProps) {  // Изменили на именованный экспорт
+const CustomFilter = ({ title, options }: CustomFilterProps) => { 
   const [selected, setSelected] = useState(options[0]);
   const router = useRouter();
 
@@ -22,12 +22,11 @@ export function CustomFilter({ title, options }: CustomFilterProps) {  // Изм
       <Listbox
         value={selected}
         onChange={(e) => {
-          setSelected(e); 
-          handleUpdateParams(e);
+          setSelected(e);
+          setFilter(e.value);
         }}
       >
         <div className="relative w-fit z-10">
-          {/* Кнопка для раскрытия списка */}
           <Listbox.Button className="custom-filter__btn">
             <span className="block truncate">{selected.title}</span>
             <Image
@@ -39,7 +38,6 @@ export function CustomFilter({ title, options }: CustomFilterProps) {  // Изм
             />
           </Listbox.Button>
 
-          {}
           <Transition
             as={Fragment}
             leave="transition ease-in duration-100"
@@ -47,7 +45,6 @@ export function CustomFilter({ title, options }: CustomFilterProps) {  // Изм
             leaveTo="opacity-0"
           >
             <Listbox.Options className="custom-filter__options">
-              {}
               {options.map((option) => (
                 <Listbox.Option
                   key={option.title}
@@ -77,4 +74,6 @@ export function CustomFilter({ title, options }: CustomFilterProps) {  // Изм
       </Listbox>
     </div>
   );
-}
+};
+
+export default CustomFilter; 
